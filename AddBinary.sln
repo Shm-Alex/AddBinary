@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddBinary", "AddBinary\AddBinary.csproj", "{9F8A3852-751B-45F2-BA1E-9AB5BAF5D98B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdbinaryTest", "AdbinaryTest\AdbinaryTest.csproj", "{7B6C7D35-BB3D-4124-BC18-9B544CC9E6CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9F8A3852-751B-45F2-BA1E-9AB5BAF5D98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F8A3852-751B-45F2-BA1E-9AB5BAF5D98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F8A3852-751B-45F2-BA1E-9AB5BAF5D98B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6C7D35-BB3D-4124-BC18-9B544CC9E6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6C7D35-BB3D-4124-BC18-9B544CC9E6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6C7D35-BB3D-4124-BC18-9B544CC9E6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6C7D35-BB3D-4124-BC18-9B544CC9E6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
