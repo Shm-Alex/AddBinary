@@ -11,7 +11,7 @@
             {
                 for (int scanWordsIndex = 1; scanWordsIndex < strs.Length; scanWordsIndex++) 
                 {
-                    if (strs[scanWordsIndex][prefixLength] != strs[0][prefixLength]) 
+                    if ((strs[scanWordsIndex].Length<= prefixLength) ||(strs[scanWordsIndex][prefixLength] != strs[0][prefixLength])) 
                     { if (prefixLength > 0) return strs[0].Substring(0, prefixLength);
                             return "";
                     }
