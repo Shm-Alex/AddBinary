@@ -5,7 +5,7 @@
         public string LongestCommonPrefix(string[] strs)
         {
             if ((strs == null)|| (strs.Length < 1)) return "";
-            if (strs.Length==1) return strs[0];
+            //if (strs.Length==1) return strs[0];
 
             for (int prefixLength = 0; prefixLength < strs[0].Length; prefixLength++) 
             {
@@ -18,7 +18,7 @@
                 }
             
             }
-            return "";
+            return strs[0];
         }
     }
 }

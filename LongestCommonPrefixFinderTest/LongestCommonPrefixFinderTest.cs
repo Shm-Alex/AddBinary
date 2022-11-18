@@ -17,6 +17,8 @@ namespace LongestCommonPrefixFinderTest
         [TestCase(false, new string[] { "sdasas", "sdanvbn", "f00" }, ExpectedResult = "", Description = "positive test")]
         [TestCase(false, new string[] { "sdasas"}, ExpectedResult = "sdasas", Description = "positive test")]
         [TestCase(false, new string[] { "ab","a" }, ExpectedResult = "a", Description = "positive test")]
+        [TestCase(false, new string[] { "flower", "flower", "flower", "flower" }, ExpectedResult = "flower", Description = "positive test")]
+        
         public string LongestCommonPrefix(bool tst,string     [] strs) => sut.LongestCommonPrefix(strs);
         
     }
