@@ -1,4 +1,6 @@
-﻿namespace NNeedleHaystackFinder
+﻿using System.Linq;
+
+namespace NNeedleHaystackFinder
 {
     public class NeedleHaystackFinder 
     {

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adder.cs" />
+    <Compile Include="LongestCommonPrefixFinder.cs" />
     <Compile Include="NeedleHaystackFinder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
