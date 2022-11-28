@@ -8,6 +8,7 @@ namespace NArrayPairSum
     {
         public ArrayPairSummerException(string msg) : base(msg) { }
         public static  ArrayPairSummerException ArrayLengthMustBeEven() => new ArrayPairSummerException("Array length must be even");
+        public static ArrayPairSummerException ArrayLengthTooLess() => new ArrayPairSummerException("Array length must more then 2 elems");
 
     }
     public class ArrayPairSummer
@@ -32,6 +33,48 @@ namespace NArrayPairSum
                 sum += sorted[i]< sorted[i+1]? sorted[i]: sorted[i + 1];
             }
             return sum;
+        }
+        public int[] TwoSum(int[] numbers, int target)
+        {
+             int r=numbers.Length-1;
+            if(!(r > 0)) { throw ArrayPairSummerException.ArrayLengthTooLess(); }
+            for (int i = 0; i < r; i++) 
+            {
+                var secondIndex = targetIndex(numbers, i+1, r, target - numbers[i]);
+                if (secondIndex != -1) return new int[] { i+1,secondIndex+1};
+            }
+            return new int[0];
+        }
+        //public (int x,int y) SplitIndex(int maxIndex, int index)
+        //{ int i=0,j;
+        //    for (int idx = 0; idx < maxIndex; idx++) 
+        //    {
+
+        //        if ((i + maxIndex - idx) > index) return (i,index-i-1);
+        //        i =i+ (maxIndex - idx);
+        //    }
+        //    return (0, 0);
+        //}
+        public int targetIndex(int[] nums, int l, int r, int target) {
+            if (target == nums[r]) return r;
+            if (target == nums[l]) return l;
+
+            while (l < r) 
+            {
+                if (target<nums[l]) return -1;
+                if (target> nums[r]) return -1;
+                if (target == nums[r]) return r;
+                if (target == nums[l]) return l;
+                int mid = (l + r) / 2;
+                if (nums[mid]==target) return mid;
+                if ((nums[mid] < target)&& (l != mid)) { l = mid; continue; }
+                else
+                {
+                    if (r != mid) { r = mid; continue; }
+                }
+                return -1;
+            }
+            return -1;
         }
     }
 }
