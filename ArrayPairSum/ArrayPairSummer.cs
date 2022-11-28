@@ -45,16 +45,7 @@ namespace NArrayPairSum
             }
             return new int[0];
         }
-        //public (int x,int y) SplitIndex(int maxIndex, int index)
-        //{ int i=0,j;
-        //    for (int idx = 0; idx < maxIndex; idx++) 
-        //    {
 
-        //        if ((i + maxIndex - idx) > index) return (i,index-i-1);
-        //        i =i+ (maxIndex - idx);
-        //    }
-        //    return (0, 0);
-        //}
         public int targetIndex(int[] nums, int l, int r, int target) {
             if (target == nums[r]) return r;
             if (target == nums[l]) return l;
