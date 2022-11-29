@@ -1,6 +1,8 @@
 ﻿using System.Security.Cryptography;
 using System.Xml.Linq;
 using System;
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 
 namespace NArrayPairSum
 {
@@ -67,5 +69,124 @@ namespace NArrayPairSum
             }
             return -1;
         }
+        public int RemoveElement(int[] nums, int val)
+        {
+            int slow =0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != val) 
+                {
+                    nums[slow] = nums[i];
+                    slow++;
+                }
+            }
+            return slow;
+        }
+        public int RemoveElement1(int[] nums, int val)
+        {
+            int k = nums.Length ;
+
+            for (int i = 0; i < k; i++)
+            {
+                for (; k > 0; k--)
+                {
+                    if (nums[k - 1] != val) break;
+                   
+                }
+                if (k == 0) return 0;
+                if (nums[i] == val) { 
+                    nums[i] = nums[k-1];
+                    k--;
+                }
+            }
+            return k;
+        }
+        public int FindMaxConsecutiveOnes(int[] nums)
+        {
+            int maxLength = 0;
+            int Consecutive1=0;
+            for (int i = 0; i < nums.Length; i++) 
+            {
+                if (nums[i] == 0)
+                {
+                    if (Consecutive1 > maxLength) maxLength = Consecutive1;
+                    Consecutive1 = 0;
+                }
+                else Consecutive1++;
+            }
+            return maxLength> Consecutive1? maxLength: Consecutive1;
+        }
+        public void Sort(int[] nums) 
+        {
+            
+            for (int unsortedB = 0;  unsortedB < nums.Length; unsortedB++) {
+                int max = nums[unsortedB];
+                int maxIndex = unsortedB;
+
+                for (int i = unsortedB + 1; i < nums.Length; i++)
+                {
+                    if (nums[i] > max) { max = nums[i]; maxIndex = i; }
+                }
+                nums[maxIndex] = nums[unsortedB];
+                nums[unsortedB] = max;
+
+            }
+        }
+
+        public int SubArrayMaxSum(int subArraylength, int[] nums)
+        {
+            
+            //if (subArraylength > nums.Length) throw;
+            int ret = nums[0];
+            for (int j = 1; j < subArraylength;  ret += nums[j], j++) { }
+            for (int l = 1, r = l + subArraylength; r < nums.Length ; l++,r++ )
+            {
+                int i = l, windowSum = 0;
+                for (; i < r; i++, windowSum += nums[i]) { }
+
+               if(windowSum> ret)ret=windowSum;
+            }
+            return ret;
+        }
+        public int MinSubArrayLen(int target, int[] nums)
+        {
+
+            for (int subArraylength = 1; (subArraylength <= nums.Length); subArraylength++) {
+                var subArrayMaxSum = SubArrayMaxSum(subArraylength, nums);
+                if (subArrayMaxSum >= target)
+                    return subArraylength;
+            }
+            
+            return 0;
+        }
+            public int MinSubArrayLen1(int target, int[] nums)
+        {
+            var copy = nums.ToArray();
+            var targetCopy = target;
+            int ret = 0;
+            for (int unsortedB = 0; unsortedB < nums.Length; unsortedB++)
+            {
+                int max = nums[unsortedB];
+                int maxIndex = unsortedB;
+
+                for (int i = unsortedB + 1; i < nums.Length; i++)
+                {
+                    if (nums[i] > max) { max = nums[i]; maxIndex = i; }
+                }
+                nums[maxIndex] = nums[unsortedB];
+                nums[unsortedB] = max;
+                target = target - max;
+                if (target <= 0)
+                {
+                    var dbg = nums.Take(ret + 1).ToArray();
+                    var sum=dbg.Sum();
+                    return ret + 1;
+                }
+                else ret++;
+            }
+            return 0;
+        }
+
     }
 }
