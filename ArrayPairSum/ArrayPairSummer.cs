@@ -137,29 +137,51 @@ namespace NArrayPairSum
         public int SubArrayMaxSum(int subArraylength, int[] nums)
         {
             
-            //if (subArraylength > nums.Length) throw;
-            int ret = nums[0];
-            for (int j = 1; j < subArraylength;  ret += nums[j], j++) { }
+          
+            int subArrayMaxSum = nums[0];
+            for (int j = 1; j < subArraylength;  subArrayMaxSum += nums[j], j++) { }
             for (int l = 1, r = l + subArraylength; r < nums.Length ; l++,r++ )
             {
                 int i = l, windowSum = 0;
                 for (; i < r; i++, windowSum += nums[i]) { }
 
-               if(windowSum> ret)ret=windowSum;
+               if(windowSum> subArrayMaxSum)subArrayMaxSum=windowSum;
             }
-            return ret;
+            return subArrayMaxSum;
         }
+        
         public int MinSubArrayLen(int target, int[] nums)
         {
-
-            for (int subArraylength = 1; (subArraylength <= nums.Length); subArraylength++) {
-                var subArrayMaxSum = SubArrayMaxSum(subArraylength, nums);
-                if (subArrayMaxSum >= target)
-                    return subArraylength;
+            if (nums[0] >= target) return 1;
+            int step = 1;
+            int subArrayMaxSum = nums[0];
+            for (int k = 1; k < nums.Length; k++)
+            {
+                if (subArrayMaxSum < nums[k])
+                {
+                    subArrayMaxSum = nums[k];
+                    if (subArrayMaxSum >= target) return step;
+                }
             }
+            int [] numsStepSums=nums.ToArray();
             
+            for (; (step <= nums.Length); step++) {
+                
+                for (int j = 0; j < nums.Length - step; j++) 
+                {
+                    numsStepSums[j] = numsStepSums[j] + nums[j + step];
+                    if (subArrayMaxSum < numsStepSums[j])
+                    {
+                        subArrayMaxSum = numsStepSums[j];
+                        if (subArrayMaxSum >= target) return step+1;
+                    }
+                }
+            }
             return 0;
         }
+            
+            
+        
             public int MinSubArrayLen1(int target, int[] nums)
         {
             var copy = nums.ToArray();

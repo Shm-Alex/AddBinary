@@ -67,6 +67,7 @@ namespace ArrayPairSummer.Test
             sut.Sort(nums);
             return nums.ToArray();
         }
+        [TestCase(8, new int[] { 1, 2, 3, 4, 5, 6 }, ExpectedResult = 2, Description = "positive test")]
         [TestCase(7,new int[] { 2, 3, 1, 2, 4, 3 }, ExpectedResult = 2, Description = "positive test")]
         [TestCase(4, new int[] { 1, 4, 4}, ExpectedResult = 1, Description = "positive test")]
         [TestCase(11, new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }, ExpectedResult = 0, Description = "positive test")]
